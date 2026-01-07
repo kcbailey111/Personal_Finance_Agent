@@ -1,0 +1,8 @@
+Stack for this Agent 
+
+Simple:
+
+1. Python
+2. Pandas
+3. LLM
+4. CSV/Excel Ingestion
