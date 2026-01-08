@@ -1,11 +1,11 @@
 transaction_id,date,merchant,amount,description,category,category_confidence
-3471f771-e128-44b1-b9eb-739e893554fe,2025-01-01,Starbucks,6.45,Coffee,Food,0.9
-55d533ea-f337-49fd-9cd5-4aa60b237bcb,2025-01-02,Uber,22.1,Ride to airport,Transportation,0.9
-8413efdb-cc39-44cb-a574-1804ce771885,2025-01-03,Netflix,15.99,Monthly subscription,Subscriptions,0.9
-95876bb7-57e0-47fb-882d-e71be13cb5d8,2025-01-04,Whole Foods,124.5,Groceries,Uncategorized,0.3
-07f701f5-1b28-4489-ad04-cd27308f1533,2025-01-05,Shell Gas,45.3,Fuel,Transportation,0.9
-2c2cadeb-846b-4911-ae1a-86dd0309cd7e,2025-01-06,Amazon,89.99,Electronics purchase,Uncategorized,0.3
-012f3f0a-a833-4bec-a119-684b0ce52ca0,2025-01-07,Spotify,9.99,Music subscription,Subscriptions,0.9
-2c0a7ffa-1875-413b-84cb-c6001fb81b74,2025-01-08,Target,56.75,Household items,Uncategorized,0.3
-8e4cae7c-8559-4381-be06-9d3e77754cd6,2025-01-09,Apple Store,199.0,New headphones,Uncategorized,0.3
-32d4f1a0-61f3-4a5d-a110-40cc06854761,2025-01-10,McDonald's,8.25,Lunch,Food,0.9
+463022ee-5952-4bc2-91da-a20396c2ba6d,2025-01-01,Starbucks,6.45,Coffee,Food,0.9
+65d159c3-0a13-487f-8623-a89f1dd2f6bf,2025-01-02,Uber,22.1,Ride to airport,Transportation,0.9
+0f4e1584-e480-4dc0-a22a-3318b76f40a4,2025-01-03,Netflix,15.99,Monthly subscription,Subscriptions,0.9
+a0ccab1d-c9de-40e1-a96e-f24c8e10f254,2025-01-04,Whole Foods,124.5,Groceries,Uncategorized,0.3
+15f36b18-aea2-463e-868b-ab7b825fee12,2025-01-05,Shell Gas,45.3,Fuel,Transportation,0.9
+0d5ff4ee-72ef-43a6-ba07-ebea58847f9b,2025-01-06,Amazon,89.99,Electronics purchase,Uncategorized,0.3
+d2927a2f-c687-4ee3-9c3a-20a2f0167075,2025-01-07,Spotify,9.99,Music subscription,Subscriptions,0.9
+b0f0090b-9e3f-44cc-88f9-bd95d1e7bdb5,2025-01-08,Target,56.75,Household items,Uncategorized,0.3
+acedff86-c4fc-42d1-b4f6-6929463ed085,2025-01-09,Apple Store,199.0,New headphones,Uncategorized,0.3
+2ec14e39-db5d-4711-a29f-dc571bdc1702,2025-01-10,McDonald's,8.25,Lunch,Food,0.9
