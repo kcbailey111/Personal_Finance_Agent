@@ -8,10 +8,15 @@ import pandas as pd
 from agents.ingestion_agent import IngestionAgent
 from agents.categorization_agent import CategorizationAgent
 
+from pathlib import Path
+
+
 
 def main():
-    input_path = "data/raw/transactions.csv"  #Potentially make thhis path begin at C:/Users/mrkcb/Downloads/Personal_Finance_Agent/data/raw/transactions.csv
-    output_path = "data/processed/categorized_transactions.csv"
+    BASE_DIR = Path(__file__).resolve().parent.parent
+
+    input_path = BASE_DIR / "data" / "raw" / "transactions.csv"
+    output_path = BASE_DIR / "data" / "processed" / "categorized_transactions.csv"
 
     # Create agents. Each agent is responsible for a single concern:
     # - IngestionAgent: reading/parsing raw data into transaction objects
