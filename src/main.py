@@ -10,7 +10,7 @@ from agents.categorization_agent import CategorizationAgent
 
 
 def main():
-    input_path = "data/raw/transactions.csv"
+    input_path = "data/raw/transactions.csv"  #Potentially make thhis path begin at C:/Users/mrkcb/Downloads/Personal_Finance_Agent/data/raw/transactions.csv
     output_path = "data/processed/categorized_transactions.csv"
 
     # Create agents. Each agent is responsible for a single concern:
