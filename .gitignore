@@ -1,3 +1,4 @@
 Notes4Me.txt
 __pycache__/
 .ipynb_checkpoints/
+.env
