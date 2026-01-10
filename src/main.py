@@ -32,8 +32,8 @@ def main():
     llm_calls = 0
 
     for transaction in transactions:
-        
-        transaction_dict = asdict(transaction)
+
+        transaction_dict = dict(transaction)
 
         try:
             rule_result = rule_agent.categorize(transaction_dict)
