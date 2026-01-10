@@ -6,7 +6,7 @@ import pandas as pd
 from pathlib import Path
 
 from agents.ingestion_agent import IngestionAgent
-from agents.categorization_agent import RuleCategorizationAgent
+from agents.categorization_agent import CategorizationAgent
 from agents.llm_categorization_agent import LLMCategorizationAgent
 from agents.routing import route_transaction
 
@@ -20,7 +20,7 @@ def main():
 
     # Initialize agents
     ingestion_agent = IngestionAgent(input_path)
-    rule_agent = RuleCategorizationAgent()
+    rule_agent = CategorizationAgent()
     llm_agent = LLMCategorizationAgent()
 
     # Load transactions as dictionaries
