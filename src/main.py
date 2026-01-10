@@ -7,7 +7,7 @@ from pathlib import Path
 
 from agents.ingestion_agent import IngestionAgent
 from agents.categorization_agent import RuleCategorizationAgent
-from agents.lll_categorization_agent import LLMCategorizationAgent
+from agents.llm_categorization_agent import LLMCategorizationAgent
 from agents.routing import route_transaction
 
 
