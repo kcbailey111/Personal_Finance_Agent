@@ -1,16 +1,19 @@
-import openai
 import json
 from config.settings import OPENAI_API_KEY
 from config.categories import ALLOWED_CATEGORIES
 
-openai.api_key = OPENAI_API_KEY
+from openai import OpenAI
+
 
 
 SYSTEM_PROMPT = """
-You are a financial transaction categorization agent.
+You are a financial transaction categorization engine.
 
-You must return ONLY valid JSON.
-Do not include markdown or explanations outside JSON.
+Rules:
+- Respond ONLY with valid JSON.
+- Do NOT include markdown.
+- Do NOT include explanations outside JSON.
+- Output MUST be parseable by json.loads().
 """
 
 USER_PROMPT_TEMPLATE = """
@@ -32,6 +35,8 @@ Rules:
 - If confidence < 0.5, category MUST be "Uncategorized".
 """
 
+client = OpenAI(api_key=OPENAI_API_KEY)
+
 
 class LLMCategorizationAgent:
     def categorize(self, transaction: dict) -> dict:
@@ -42,8 +47,9 @@ class LLMCategorizationAgent:
             categories="\n".join(ALLOWED_CATEGORIES),
         )
 
-        response = openai.ChatCompletion.create(
-            model="gpt-4",
+        
+        response = client.chat.completions.create(
+            model="gpt-5-nano",
             temperature=0,
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPT},
@@ -51,6 +57,10 @@ class LLMCategorizationAgent:
             ],
         )
 
-        content = response["choices"][0]["message"]["content"]
+        content = response.choices[0].message.content
 
-        return json.loads(content)
+
+        try:
+            return json.loads(content)
+        except json.JSONDecodeError:
+            raise ValueError(f"Model returned invalid JSON: {content}")
