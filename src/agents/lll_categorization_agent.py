@@ -4,8 +4,6 @@ from config.categories import ALLOWED_CATEGORIES
 
 from openai import OpenAI
 
-
-
 SYSTEM_PROMPT = """
 You are a financial transaction categorization engine.
 
