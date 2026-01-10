@@ -12,8 +12,8 @@ from agents.routing import route_transaction
 
 
 def main():
-    # Resolve base directory
-    BASE_DIR = Path(__file__).resolve().parent.parent
+    # Resolve base directory safely
+    BASE_DIR = Path(__file__).resolve().parent
 
     input_path = BASE_DIR / "data" / "raw" / "transactions.csv"
     output_path = BASE_DIR / "data" / "processed" / "categorized_transactions.csv"
@@ -27,17 +27,31 @@ def main():
     transactions = ingestion_agent.load_transactions()
 
     results = []
+    llm_calls = 0
 
     for transaction in transactions:
-        # Apply rule-based categorization
-        rule_result = rule_agent.categorize(transaction)
+        try:
+            # Apply rule-based categorization
+            rule_result = rule_agent.categorize(transaction)
 
-        # Route decision (rule vs LLM)
-        final_result = route_transaction(
-            rule_result=rule_result,
-            transaction=transaction,
-            llm_agent=llm_agent
-        )
+            # Route decision (rule vs LLM)
+            final_result, used_llm = route_transaction(
+                rule_result=rule_result,
+                transaction=transaction,
+                llm_agent=llm_agent,
+                return_llm_flag=True
+            )
+
+            if used_llm:
+                llm_calls += 1
+
+        except Exception as e:
+            # Fail safe: do not kill batch on LLM or logic error
+            final_result = {
+                "category": "Uncategorized",
+                "confidence": 0.0,
+                "reason": f"Categorization error: {str(e)}"
+            }
 
         results.append({**transaction, **final_result})
 
@@ -46,6 +60,7 @@ def main():
     output_df.to_csv(output_path, index=False)
 
     print(f"Processed {len(output_df)} transactions.")
+    print(f"LLM used for {llm_calls} transactions.")
     print(f"Saved output to {output_path}")
 
 
