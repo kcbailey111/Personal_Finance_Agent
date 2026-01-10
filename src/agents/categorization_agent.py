@@ -13,7 +13,10 @@ CATEGORY_RULES = {
 
 class CategorizationAgent:
     def categorize(self, transactions: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        
         for txn in transactions:
+            assert isinstance(txn, dict), f"Expected dict, got {type(txn)}"
+
             matched = False
 
             # Defensive guard (important in real pipelines)
