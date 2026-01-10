@@ -13,7 +13,8 @@ from agents.routing import route_transaction
 
 def main():
     # Resolve base directory safely
-    BASE_DIR = Path(__file__).resolve().parent
+    BASE_DIR = Path(__file__).resolve().parents[1]
+
 
     input_path = BASE_DIR / "data" / "raw" / "transactions.csv"
     output_path = BASE_DIR / "data" / "processed" / "categorized_transactions.csv"
@@ -58,6 +59,8 @@ def main():
     # Persist results
     output_df = pd.DataFrame(results)
     output_df.to_csv(output_path, index=False)
+
+    print(f"Looking for input file at: {input_path}")
 
     print(f"Processed {len(output_df)} transactions.")
     print(f"LLM used for {llm_calls} transactions.")
