@@ -1,14 +1,14 @@
-date,merchant,amount,description,category,confidence,reason
-2025-01-01,Starbucks,6.45,Coffee,Uncategorized,0.0,"Categorization error: Expected dict, got <class 'str'>"
-2025-01-02,Uber,22.1,Ride to airport,Uncategorized,0.0,"Categorization error: Expected dict, got <class 'str'>"
-2025-01-03,Netflix,15.99,Monthly subscription,Uncategorized,0.0,"Categorization error: Expected dict, got <class 'str'>"
-2025-01-04,Whole Foods,124.5,Groceries,Uncategorized,0.0,"Categorization error: Expected dict, got <class 'str'>"
-2025-01-05,Shell Gas,45.3,Fuel,Uncategorized,0.0,"Categorization error: Expected dict, got <class 'str'>"
-2025-01-06,Amazon,89.99,Electronics purchase,Uncategorized,0.0,"Categorization error: Expected dict, got <class 'str'>"
-2025-01-07,Spotify,9.99,Music subscription,Uncategorized,0.0,"Categorization error: Expected dict, got <class 'str'>"
-2025-01-08,Target,56.75,Household items,Uncategorized,0.0,"Categorization error: Expected dict, got <class 'str'>"
-2025-01-09,Apple Store,199.0,New headphones,Uncategorized,0.0,"Categorization error: Expected dict, got <class 'str'>"
-2025-01-10,McDonald's,8.25,Lunch,Uncategorized,0.0,"Categorization error: Expected dict, got <class 'str'>"
-2026-01-11,Dunkin',4.5,Donut and coffee,Uncategorized,0.0,"Categorization error: Expected dict, got <class 'str'>"
-2026-01-12,Airbnb,250.0,Weekend getaway,Uncategorized,0.0,"Categorization error: Expected dict, got <class 'str'>"
-2026-01-20,Costco,78.2,Bulk groceries,Uncategorized,0.0,"Categorization error: Expected dict, got <class 'str'>"
+date,merchant,amount,description,category,category_confidence,confidence,source,reason
+2025-01-01,Starbucks,6.45,Coffee,Food,0.9,0.9,rule,
+2025-01-02,Uber,22.1,Ride to airport,Transportation,0.9,0.9,rule,
+2025-01-03,Netflix,15.99,Monthly subscription,Subscriptions,0.9,0.9,rule,
+2025-01-04,Whole Foods,124.5,Groceries,Uncategorized,0.3,0.3,rule_low_confidence,
+2025-01-05,Shell Gas,45.3,Fuel,Transportation,0.9,0.9,rule,
+2025-01-06,Amazon,89.99,Electronics purchase,Uncategorized,0.3,0.3,rule_low_confidence,
+2025-01-07,Spotify,9.99,Music subscription,Subscriptions,0.9,0.9,rule,
+2025-01-08,Target,56.75,Household items,Uncategorized,0.3,0.3,rule_low_confidence,
+2025-01-09,Apple Store,199.0,New headphones,Uncategorized,0.3,0.3,rule_low_confidence,
+2025-01-10,McDonald's,8.25,Lunch,Food,0.9,0.9,rule,
+2026-01-11,Dunkin',4.5,Donut and coffee,Uncategorized,0.3,0.3,rule_low_confidence,
+2026-01-12,Airbnb,250.0,Weekend getaway,Uncategorized,0.3,0.3,rule_low_confidence,
+2026-01-20,Costco,78.2,Bulk groceries,Uncategorized,0.3,0.3,rule_low_confidence,
