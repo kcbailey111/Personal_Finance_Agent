@@ -1,4 +1,4 @@
-from typing import List, Dict, Any
+from typing import Dict, Any
 
 
 # Simple in-memory keyword map for categories.
@@ -12,26 +12,21 @@ CATEGORY_RULES = {
 
 
 class CategorizationAgent:
-    def categorize(self, transactions: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-        
-        for txn in transactions:
-            assert isinstance(txn, dict), f"Expected dict, got {type(txn)}"
+    def categorize(self, txn: Dict[str, Any]) -> Dict[str, Any]:
+        assert isinstance(txn, dict), f"Expected dict, got {type(txn)}"
 
-            matched = False
+        merchant = str(txn.get("merchant", "")).lower()
+        matched = False
 
-            # Defensive guard (important in real pipelines)
-            merchant = txn.get("merchant", "")
-            merchant_lower = merchant.lower()
+        for category, keywords in CATEGORY_RULES.items():
+            if any(keyword in merchant for keyword in keywords):
+                txn["category"] = category
+                txn["category_confidence"] = 0.9
+                matched = True
+                break
 
-            for category, keywords in CATEGORY_RULES.items():
-                if any(keyword in merchant_lower for keyword in keywords):
-                    txn["category"] = category
-                    txn["category_confidence"] = 0.9
-                    matched = True
-                    break
+        if not matched:
+            txn["category"] = "Uncategorized"
+            txn["category_confidence"] = 0.3
 
-            if not matched:
-                txn["category"] = "Uncategorized"
-                txn["category_confidence"] = 0.3
-
-        return transactions
+        return txn

@@ -36,7 +36,7 @@ def main():
         transaction_dict = dict(transaction)
 
         try:
-            rule_result = rule_agent.categorize(transaction_dict)
+            rule_result = rule_agent.categorize(transaction)
 
             final_result, used_llm = route_transaction(
                 rule_result=rule_result,
@@ -55,7 +55,7 @@ def main():
                 "reason": f"Categorization error: {str(e)}"
             }
 
-        results.append({**transaction_dict, **final_result})
+        results.append({**transaction, **final_result})
 
 
     # Persist results
