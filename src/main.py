@@ -4,6 +4,7 @@
 
 import pandas as pd
 from pathlib import Path
+from dataclasses import asdict
 
 from agents.ingestion_agent import IngestionAgent
 from agents.categorization_agent import CategorizationAgent
@@ -31,14 +32,15 @@ def main():
     llm_calls = 0
 
     for transaction in transactions:
-        try:
-            # Apply rule-based categorization
-            rule_result = rule_agent.categorize(transaction)
+        
+        transaction_dict = asdict(transaction)
 
-            # Route decision (rule vs LLM)
+        try:
+            rule_result = rule_agent.categorize(transaction_dict)
+
             final_result, used_llm = route_transaction(
                 rule_result=rule_result,
-                transaction=transaction,
+                transaction=transaction_dict,
                 llm_agent=llm_agent,
                 return_llm_flag=True
             )
@@ -47,14 +49,14 @@ def main():
                 llm_calls += 1
 
         except Exception as e:
-            # Fail safe: do not kill batch on LLM or logic error
             final_result = {
                 "category": "Uncategorized",
                 "confidence": 0.0,
                 "reason": f"Categorization error: {str(e)}"
             }
 
-        results.append({**transaction, **final_result})
+        results.append({**transaction_dict, **final_result})
+
 
     # Persist results
     output_df = pd.DataFrame(results)
@@ -68,4 +70,5 @@ def main():
 
 
 if __name__ == "__main__":
+
     main()
