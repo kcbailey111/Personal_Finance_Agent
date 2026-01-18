@@ -1,0 +1,31 @@
+============================================================
+SPENDING ANALYTICS DASHBOARD
+============================================================
+
+Total Spending: $968.77
+Total Transactions: 15
+Average Transaction: $64.58
+
+TOP SPENDING CATEGORIES:
+------------------------------------------------------------
+  Shopping             $    345.74  ( 35.7%)  [3 transactions]
+  Entertainment        $    250.00  ( 25.8%)  [1 transactions]
+  Groceries            $    202.70  ( 20.9%)  [2 transactions]
+  Transportation       $     67.40  (  7.0%)  [2 transactions]
+  Uncategorized        $     57.75  (  6.0%)  [2 transactions]
+
+MONTHLY SPENDING SUMMARY:
+------------------------------------------------------------
+  2022-01    $     15.75  [1 transactions]
+  2025-01    $    578.32  [10 transactions]
+  2026-01    $    374.70  [4 transactions]
+
+TOP MERCHANTS BY SPENDING:
+------------------------------------------------------------
+  Airbnb                         $    250.00
+  Apple Store                    $    199.00
+  Whole Foods                    $    124.50
+  Amazon                         $     89.99
+  Costco                         $     78.20
+
+============================================================

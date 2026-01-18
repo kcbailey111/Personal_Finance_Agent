@@ -9,6 +9,7 @@ from agents.ingestion_agent import IngestionAgent
 from agents.categorization_agent import CategorizationAgent
 from agents.llm_categorization_agent import LLMCategorizationAgent
 from agents.routing import route_transaction
+from tools.expense_stats import ExpenseAnalytics
 
 
 def main():
@@ -58,6 +59,17 @@ def main():
     print(f"Processed {len(output_df)} transactions.")
     print(f"LLM used for {llm_calls} transactions.")
     print(f"Saved output to {output_path}")
+    
+    # Generate and display analytics dashboard
+    print("\n")
+    analytics = ExpenseAnalytics(output_df)
+    analytics_report = analytics.generate_summary_report()
+    print(analytics_report)
+    
+    # Save analytics summary to file
+    analytics_output_path = BASE_DIR / "data" / "processed" / "spending_summary.txt"
+    analytics.save_summary_to_file(analytics_output_path)
+    print(f"\nAnalytics summary saved to: {analytics_output_path}")
 
 
 if __name__ == "__main__":
