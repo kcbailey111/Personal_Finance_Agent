@@ -1,8 +1,10 @@
 import json
+from typing import Dict
+
+from openai import OpenAI
 from config.settings import OPENAI_API_KEY
 from config.categories import ALLOWED_CATEGORIES
 
-from openai import OpenAI
 
 SYSTEM_PROMPT = """
 You are a financial transaction categorization engine.
@@ -33,21 +35,21 @@ Rules:
 - If confidence < 0.5, category MUST be "Uncategorized".
 """
 
-client = OpenAI(api_key=OPENAI_API_KEY)
-
 
 class LLMCategorizationAgent:
-    def categorize(self, transaction: dict) -> dict:
+    def __init__(self):
+        self.client = OpenAI(api_key=OPENAI_API_KEY)
+
+    def categorize(self, transaction: Dict) -> Dict:
         prompt = USER_PROMPT_TEMPLATE.format(
-            description=transaction["description"],
-            amount=transaction["amount"],
-            date=transaction["date"],
+            description=transaction.get("description", ""),
+            amount=transaction.get("amount", 0),
+            date=transaction.get("date", ""),
             categories="\n".join(ALLOWED_CATEGORIES),
         )
 
-        
-        response = client.chat.completions.create(
-            model="gpt-5-nano",
+        response = self.client.chat.completions.create(
+            model="gpt-5-mini",
             temperature=0,
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPT},
@@ -55,10 +57,27 @@ class LLMCategorizationAgent:
             ],
         )
 
-        content = response.choices[0].message.content
-
+        content = response.choices[0].message.content.strip()
 
         try:
-            return json.loads(content)
+            result = json.loads(content)
         except json.JSONDecodeError:
-            raise ValueError(f"Model returned invalid JSON: {content}")
+            return {
+                "category": "Uncategorized",
+                "confidence": 0.0,
+                "reason": "LLM returned invalid JSON"
+            }
+
+        # Defensive normalization
+        category = result.get("category", "Uncategorized")
+        confidence = float(result.get("confidence", 0))
+        reason = result.get("reason", "No explanation provided")
+
+        if confidence < 0.5:
+            category = "Uncategorized"
+
+        return {
+            "category": category,
+            "confidence": confidence,
+            "reason": reason
+        }

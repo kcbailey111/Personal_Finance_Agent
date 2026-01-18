@@ -1,7 +1,5 @@
 from typing import Dict, Any
 
-
-# Simple in-memory keyword map for categories.
 CATEGORY_RULES = {
     "Food": ["mcdonald", "chipotle", "restaurant", "cafe", "starbucks"],
     "Transportation": ["uber", "lyft", "shell", "exxon", "chevron"],
@@ -16,17 +14,18 @@ class CategorizationAgent:
         assert isinstance(txn, dict), f"Expected dict, got {type(txn)}"
 
         merchant = str(txn.get("merchant", "")).lower()
-        matched = False
 
         for category, keywords in CATEGORY_RULES.items():
             if any(keyword in merchant for keyword in keywords):
-                txn["category"] = category
-                txn["category_confidence"] = 0.9
-                matched = True
-                break
+                return {
+                    "category": category,
+                    "confidence": 0.9,
+                    "reason": f"Matched keyword rule for {category}"
+                }
 
-        if not matched:
-            txn["category"] = "Uncategorized"
-            txn["category_confidence"] = 0.3
-
-        return txn
+        # No rule matched → low confidence, escalate later
+        return {
+            "category": "Uncategorized",
+            "confidence": 0.3,
+            "reason": "No matching keyword rules"
+        }
