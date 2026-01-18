@@ -38,15 +38,15 @@ def main():
                 llm_agent=llm_agent
             )
 
-            if final_result.get("categorization_source") == "llm":
+            if final_result.get("source") == "llm":
                 llm_calls += 1
 
         except Exception as e:
             final_result = {
-                "final_category": "Uncategorized",
-                "final_confidence": 0.0,
-                "categorization_source": "error",
-                "llm_reason": f"Categorization error: {str(e)}"
+                "category": "Uncategorized",
+                "confidence": 0.0,
+                "source": "error",
+                "reason": f"Categorization error: {str(e)}"
             }
 
         results.append({**transaction, **final_result})
