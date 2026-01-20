@@ -1,3 +1,5 @@
 pandas
 python-dotenv
 openai
+numpy
+scipy
