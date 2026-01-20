@@ -1,0 +1,41 @@
+============================================================
+ANOMALY DETECTION REPORT
+============================================================
+
+Total Transactions Analyzed: 15
+Anomalies Detected: 4
+Anomaly Rate: 26.7%
+
+ANOMALIES BY TYPE:
+------------------------------------------------------------
+  IQR Outlier                      2
+  Unknown Merchant                 2
+
+TOP ANOMALIES (by severity):
+------------------------------------------------------------
+
+1. Square - $15.75
+   Date: 2022-01-24
+   Category: Uncategorized
+   Score: 1.00
+   Reason: Unknown/suspicious merchant: 'Square'
+
+2. Unknown Merchant - $42.00
+   Date: 2026-01-23
+   Category: Uncategorized
+   Score: 1.00
+   Reason: Unknown/suspicious merchant: 'Unknown Merchant'
+
+3. Airbnb - $250.00
+   Date: 2026-01-12
+   Category: Entertainment
+   Score: 0.83
+   Reason: IQR outlier: Amount $250.00 outside range [$-93.97, $190.93]
+
+4. Apple Store - $199.00
+   Date: 2025-01-09
+   Category: Shopping
+   Score: 0.11
+   Reason: IQR outlier: Amount $199.00 outside range [$-93.97, $190.93]
+
+============================================================

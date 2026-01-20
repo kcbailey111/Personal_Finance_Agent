@@ -9,6 +9,7 @@ from agents.ingestion_agent import IngestionAgent
 from agents.categorization_agent import CategorizationAgent
 from agents.llm_categorization_agent import LLMCategorizationAgent
 from agents.routing import route_transaction
+from agents.anomaly_detection_agent import AnomalyDetectionAgent
 from tools.expense_stats import ExpenseAnalytics
 
 
@@ -53,6 +54,11 @@ def main():
         results.append({**transaction, **final_result})
 
     output_df = pd.DataFrame(results)
+    
+    # Detect anomalies
+    anomaly_agent = AnomalyDetectionAgent()
+    output_df = anomaly_agent.detect_anomalies(output_df)
+    
     output_df.to_csv(output_path, index=False)
 
     print(f"Looking for input file at: {input_path}")
@@ -66,10 +72,20 @@ def main():
     analytics_report = analytics.generate_summary_report()
     print(analytics_report)
     
+    # Generate and display anomaly detection report
+    print("\n")
+    anomaly_report = anomaly_agent.generate_anomaly_report(output_df)
+    print(anomaly_report)
+    
     # Save analytics summary to file
     analytics_output_path = BASE_DIR / "data" / "processed" / "spending_summary.txt"
     analytics.save_summary_to_file(analytics_output_path)
     print(f"\nAnalytics summary saved to: {analytics_output_path}")
+    
+    # Save anomaly report to file
+    anomaly_output_path = BASE_DIR / "data" / "processed" / "anomaly_report.txt"
+    anomaly_output_path.write_text(anomaly_report, encoding='utf-8')
+    print(f"Anomaly report saved to: {anomaly_output_path}")
 
 
 if __name__ == "__main__":
