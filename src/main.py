@@ -82,6 +82,15 @@ def main():
     analytics.save_summary_to_file(analytics_output_path)
     print(f"\nAnalytics summary saved to: {analytics_output_path}")
     
+    # Save monthly summary to CSV file
+    monthly_summary = analytics.get_monthly_summary()
+    monthly_output_path = BASE_DIR / "data" / "processed" / "monthly_summary.csv"
+    if not monthly_summary.empty:
+        monthly_summary.to_csv(monthly_output_path, index=False)
+        print(f"Monthly summary saved to: {monthly_output_path}")
+    else:
+        print(f"Warning: No monthly summary data to save.")
+    
     # Save anomaly report to file
     anomaly_output_path = BASE_DIR / "data" / "processed" / "anomaly_report.txt"
     anomaly_output_path.write_text(anomaly_report, encoding='utf-8')
