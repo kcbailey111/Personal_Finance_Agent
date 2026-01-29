@@ -1,0 +1,18 @@
+{
+  "categories": [
+    {
+      "category": "Uncategorized",
+      "month": "2026-01",
+      "spent": 374.7,
+      "budget": 393.44,
+      "remaining": 18.74,
+      "over_budget": false
+    }
+  ],
+  "overall": {
+    "month": "2026-01",
+    "total_spent": 374.7,
+    "total_budget": 393.44,
+    "over_budget": false
+  }
+}

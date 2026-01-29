@@ -1,0 +1,12 @@
+budgets:
+  # Monthly budgets by category (numbers are dollars)
+  Groceries: 400
+  Dining: 150
+  Transportation: 120
+  Utilities: 200
+  Entertainment: 100
+  Shopping: 150
+
+alerts:
+  # If spent exceeds this fraction of budget, consider it "near limit"
+  near_limit_ratio: 0.9

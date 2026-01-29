@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Personal Finance Dashboard</title>
+  <style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; margin: 24px; color: #111; }
+    .card { border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; margin-bottom: 16px; }
+    h1 { margin: 0 0 12px; font-size: 22px; }
+    h2 { margin: 0 0 12px; font-size: 16px; }
+    .table { border-collapse: collapse; width: 100%; }
+    .table th, .table td { padding: 8px 10px; border-bottom: 1px solid #eee; text-align: left; }
+    .muted { color: #6b7280; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <h1>Personal Finance Dashboard</h1>
+  <p class="muted">Generated locally (offline-friendly).</p>
+
+  <div class="card">
+    <h2>Top categories</h2>
+    <svg width="640" height="106" viewBox="0 0 640 106"><text x="0" y="24" font-size="12" fill="#222">Uncategorized</text><rect x="210" y="10" width="420" height="18" fill="#4f46e5" rx="3" /><text x="638" y="24" font-size="12" fill="#222">$860.69</text><text x="0" y="48" font-size="12" fill="#222">Transportation</text><rect x="210" y="34" width="32" height="18" fill="#4f46e5" rx="3" /><text x="250" y="48" font-size="12" fill="#222">$67.40</text><text x="0" y="72" font-size="12" fill="#222">Subscriptions</text><rect x="210" y="58" width="12" height="18" fill="#4f46e5" rx="3" /><text x="230" y="72" font-size="12" fill="#222">$25.98</text><text x="0" y="96" font-size="12" fill="#222">Food</text><rect x="210" y="82" width="7" height="18" fill="#4f46e5" rx="3" /><text x="225" y="96" font-size="12" fill="#222">$14.70</text></svg>
+    <table class="dataframe table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>category</th>
+      <th>total_spent</th>
+      <th>transaction_count</th>
+      <th>avg_transaction</th>
+      <th>percentage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Uncategorized</td>
+      <td>860.69</td>
+      <td>9</td>
+      <td>95.63</td>
+      <td>88.8</td>
+    </tr>
+    <tr>
+      <td>Transportation</td>
+      <td>67.40</td>
+      <td>2</td>
+      <td>33.70</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <td>Subscriptions</td>
+      <td>25.98</td>
+      <td>2</td>
+      <td>12.99</td>
+      <td>2.7</td>
+    </tr>
+    <tr>
+      <td>Food</td>
+      <td>14.70</td>
+      <td>2</td>
+      <td>7.35</td>
+      <td>1.5</td>
+    </tr>
+  </tbody>
+</table>
+  </div>
+
+  <div class="card">
+    <h2>Monthly totals</h2>
+    <table class="dataframe table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>month</th>
+      <th>total_spent</th>
+      <th>transaction_count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2022-01</td>
+      <td>15.75</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2025-01</td>
+      <td>578.32</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2026-01</td>
+      <td>374.70</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+  </div>
+</body>
+</html>

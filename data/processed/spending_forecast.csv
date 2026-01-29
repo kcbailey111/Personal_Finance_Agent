@@ -1,0 +1,9 @@
+month,category,forecast_total_spent,method
+2026-02,Uncategorized,279.16,linear
+2026-02,Transportation,67.4,flat
+2026-02,Subscriptions,25.98,flat
+2026-02,Food,14.7,flat
+2026-03,Uncategorized,183.62,linear
+2026-03,Transportation,67.4,flat
+2026-03,Subscriptions,25.98,flat
+2026-03,Food,14.7,flat

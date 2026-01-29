@@ -1,0 +1,28 @@
+{
+  "recommendations": [
+    {
+      "title": "Review your spending in Uncategorized",
+      "rationale": "This is your highest-spend category at $860.69. Identify 1\u20132 easy cuts.",
+      "impact": "high",
+      "category": "Uncategorized"
+    },
+    {
+      "title": "Audit recurring charges",
+      "rationale": "Recurring charges average about $224.98 per month. Cancel or downgrade anything unused.",
+      "impact": "high",
+      "category": null
+    },
+    {
+      "title": "Review flagged anomalies",
+      "rationale": "4 transactions were flagged as unusual. Verify they\u2019re legitimate and adjust alerts if needed.",
+      "impact": "medium",
+      "category": null
+    },
+    {
+      "title": "Improve categorization rules",
+      "rationale": "9 transactions are Uncategorized. Add a rule for common merchants to reduce future LLM usage and improve reporting.",
+      "impact": "medium",
+      "category": "Uncategorized"
+    }
+  ]
+}

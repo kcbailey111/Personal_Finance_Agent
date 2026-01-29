@@ -282,3 +282,59 @@ class AnomalyDetectionAgent:
         ])
         
         return "\n".join(report_lines)
+
+    def add_ai_explanations(self, df: pd.DataFrame, enabled: bool | None = None) -> pd.DataFrame:
+        """
+        Optionally enrich anomalies with LLM-generated, human-readable explanations.
+        If LLM is unavailable/disabled, this falls back to the existing anomaly_reason.
+        """
+        from config.settings import LLM_ENABLED, OPENAI_API_KEY, OPENAI_INSIGHTS_MODEL
+
+        out = df.copy()
+        if out.empty:
+            out["ai_anomaly_explanation"] = ""
+            return out
+
+        out["ai_anomaly_explanation"] = out.get("anomaly_reason", "").astype(str)
+
+        use_llm = LLM_ENABLED if enabled is None else bool(enabled)
+        if not use_llm or not OPENAI_API_KEY:
+            return out
+
+        try:
+            from openai import OpenAI
+
+            client = OpenAI(api_key=OPENAI_API_KEY)
+        except Exception:
+            return out
+
+        anomalies = out[out.get("is_anomaly", False) == True]  # noqa: E712
+        if anomalies.empty:
+            return out
+
+        for idx, row in anomalies.iterrows():
+            try:
+                payload = {
+                    "date": str(row.get("date", "")),
+                    "merchant": str(row.get("merchant", row.get("description", ""))),
+                    "amount": float(row.get("amount", 0) or 0),
+                    "category": str(row.get("category", "")),
+                    "reason": str(row.get("anomaly_reason", "")),
+                    "score": float(row.get("anomaly_score", 0) or 0),
+                }
+                prompt = (
+                    "Explain this flagged financial transaction anomaly in 1-2 short sentences. "
+                    "Be practical and mention what the user should check. Return plain text only.\n\n"
+                    f"Anomaly JSON:\n{payload}"
+                )
+                resp = client.chat.completions.create(
+                    model=OPENAI_INSIGHTS_MODEL,
+                    messages=[{"role": "user", "content": prompt}],
+                )
+                text = (resp.choices[0].message.content or "").strip()
+                if text:
+                    out.at[idx, "ai_anomaly_explanation"] = text
+            except Exception:
+                continue
+
+        return out

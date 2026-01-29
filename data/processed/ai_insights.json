@@ -1,0 +1,76 @@
+{
+  "insights": [
+    {
+      "type": "top_category",
+      "text": "Top category is Uncategorized at $860.69 (88.8% of total)."
+    },
+    {
+      "type": "month_over_month",
+      "text": "Month-over-month spending changed by $-203.62 (-35.2%)."
+    },
+    {
+      "type": "anomalies",
+      "text": "4 transactions were flagged as anomalies. Review them for potential fraud or one-offs."
+    },
+    {
+      "type": "recurring",
+      "text": "3 transactions look recurring (subscriptions/bills). Consider auditing them."
+    }
+  ],
+  "recommendations": [
+    "Review your top 1\u20132 spending categories and pick a small, realistic cut for next month.",
+    "Audit recurring charges and cancel anything unused."
+  ],
+  "summary_stats": {
+    "total_spending": 968.77,
+    "transaction_count": 15
+  },
+  "top_categories": [
+    {
+      "category": "Uncategorized",
+      "total_spent": 860.69,
+      "transaction_count": 9,
+      "avg_transaction": 95.63,
+      "percentage": 88.8
+    },
+    {
+      "category": "Transportation",
+      "total_spent": 67.4,
+      "transaction_count": 2,
+      "avg_transaction": 33.7,
+      "percentage": 7.0
+    },
+    {
+      "category": "Subscriptions",
+      "total_spent": 25.98,
+      "transaction_count": 2,
+      "avg_transaction": 12.99,
+      "percentage": 2.7
+    },
+    {
+      "category": "Food",
+      "total_spent": 14.7,
+      "transaction_count": 2,
+      "avg_transaction": 7.35,
+      "percentage": 1.5
+    }
+  ],
+  "monthly_summary": [
+    {
+      "month": "2022-01",
+      "total_spent": 15.75,
+      "transaction_count": 1
+    },
+    {
+      "month": "2025-01",
+      "total_spent": 578.32,
+      "transaction_count": 10
+    },
+    {
+      "month": "2026-01",
+      "total_spent": 374.7,
+      "transaction_count": 4
+    }
+  ],
+  "narrative": "Top category is Uncategorized at $860.69 (88.8% of total). Month-over-month spending changed by $-203.62 (-35.2%). 4 transactions were flagged as anomalies. Review them for potential fraud or one-offs. 3 transactions look recurring (subscriptions/bills). Consider auditing them."
+}

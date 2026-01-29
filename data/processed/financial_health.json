@@ -1,0 +1,13 @@
+{
+  "score": 55,
+  "reasons": [
+    "Monthly spending varies a lot month-to-month.",
+    "There are several flagged anomalies\u2014review for fraud or one-offs."
+  ],
+  "components": {
+    "volatility": 0.72,
+    "discretionary_share": 0.0,
+    "anomaly_rate": 0.267,
+    "budget_over_ratio": 0.0
+  }
+}

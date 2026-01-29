@@ -8,11 +8,10 @@ Average Transaction: $64.58
 
 TOP SPENDING CATEGORIES:
 ------------------------------------------------------------
-  Shopping             $    345.74  ( 35.7%)  [3 transactions]
-  Entertainment        $    250.00  ( 25.8%)  [1 transactions]
-  Groceries            $    202.70  ( 20.9%)  [2 transactions]
+  Uncategorized        $    860.69  ( 88.8%)  [9 transactions]
   Transportation       $     67.40  (  7.0%)  [2 transactions]
-  Uncategorized        $     57.75  (  6.0%)  [2 transactions]
+  Subscriptions        $     25.98  (  2.7%)  [2 transactions]
+  Food                 $     14.70  (  1.5%)  [2 transactions]
 
 MONTHLY SPENDING SUMMARY:
 ------------------------------------------------------------
